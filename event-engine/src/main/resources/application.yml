@@ -1,0 +1,8 @@
+server:
+  port: 8000
+
+kafka:
+  broker:
+    server: localhost
+  topic: news_topic
+  groupId: news_consumer_group
