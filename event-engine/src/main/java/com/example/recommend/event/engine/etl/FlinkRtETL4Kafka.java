@@ -45,7 +45,7 @@ public class FlinkRtETL4Kafka {
         JdbcConnectionOptions connectionOptions = JdbcConnectorOptions.builder()
                 .setDBUrl("jdbc:mysql://localhost:3306/material")
                 .setTableName("news_info")
-                .setDriverName("com.mysql.jdbc.Driver")
+                .setDriverName("com.mysql.cj.jdbc.Driver")
                 .setUsername("root")
                 .setPassword("12345678")
                 .build();

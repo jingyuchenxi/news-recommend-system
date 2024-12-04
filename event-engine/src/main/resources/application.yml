@@ -1,5 +1,20 @@
 server:
   port: 8000
+  servlet:
+    context-path: /capi
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/material?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 50
+      max-wait: 60000
 
 kafka:
   broker:

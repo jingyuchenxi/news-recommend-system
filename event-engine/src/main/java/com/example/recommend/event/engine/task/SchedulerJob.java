@@ -26,7 +26,7 @@ public class SchedulerJob {
         // 任务可以从这里初始化
     }
 
-    @Scheduled(cron = "0/2 * * * * ?")
+    @Scheduled(cron = "* 0/1 * * * ?")
     public void soHuJob() {
         CrawlConfig config = new CrawlConfig();
         config.setCrawlStorageFolder("/Users/aurora/Desktop/code/recommend/news-recommend-system/folder");

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="datasource.properties"/>
+    <context id="context" targetRuntime="MyBatis3">
+        <!--插件-->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!--jdbc-->
+        <jdbcConnection driverClass="${driverClassName}"
+                        connectionURL="${url}"
+                        userId="${username}"
+                        password="${password}">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!--是否使用bigDecimal，默认false。
+                false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+                true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal-->
+            <property name="forceBigDecimals" value="true"/>
+            <!--默认false
+                false，将所有 JDBC 的时间类型解析为 java.util.Date
+                true，将 JDBC 的时间类型按如下规则解析
+                    DATE	                -> java.time.LocalDate
+                    TIME	                -> java.time.LocalTime
+                    TIMESTAMP               -> java.time.LocalDateTime
+                    TIME_WITH_TIMEZONE  	-> java.time.OffsetTime
+                    TIMESTAMP_WITH_TIMEZONE	-> java.time.OffsetDateTime
+                -->
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <!--生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.example.recommend.persistent.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成Mapper.java接口-->
+        <javaClientGenerator targetPackage="com.example.recommend.persistent.mapper"
+                             targetProject="src/main/java"
+                             type="ANNOTATEDMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--表配置-->
+        <table tableName="news_info" domainObjectName="NewsInfoPo">
+            <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <!--            <columnOverride column="quantity" javaType="java.lang.Integer" />-->
+            <!--            <columnOverride column="status" javaType="java.lang.Integer" />-->
+        </table>
+    </context>
+</generatorConfiguration>
